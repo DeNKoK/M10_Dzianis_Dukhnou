@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "d+PGPZwv3sFYUV+Cx1Z5MJnbTdS6Eru/Xhh6tlCSULSYW/sbiCcpJi/m6ZI8e4Qt6GBTsR+xZYsp7WI8836Hiw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Dzianis_Dukhnou\\source\\repos\\M8_Dzianis_Dukhnou\\M8_Dzianis_Dukhnou.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Dzianis_Dukhnou\\.nuget\\packages\\microsoft.codecoverage\\16.5.0\\microsoft.codecoverage.16.5.0.nupkg.sha512",
+    "C:\\Users\\Dzianis_Dukhnou\\.nuget\\packages\\microsoft.net.test.sdk\\16.5.0\\microsoft.net.test.sdk.16.5.0.nupkg.sha512",
+    "C:\\Users\\Dzianis_Dukhnou\\.nuget\\packages\\nunit\\3.12.0\\nunit.3.12.0.nupkg.sha512",
+    "C:\\Users\\Dzianis_Dukhnou\\.nuget\\packages\\nunit3testadapter\\3.16.1\\nunit3testadapter.3.16.1.nupkg.sha512",
+    "C:\\Users\\Dzianis_Dukhnou\\.nuget\\packages\\selenium.support\\3.141.0\\selenium.support.3.141.0.nupkg.sha512",
+    "C:\\Users\\Dzianis_Dukhnou\\.nuget\\packages\\selenium.webdriver\\3.141.0\\selenium.webdriver.3.141.0.nupkg.sha512",
+    "C:\\Users\\Dzianis_Dukhnou\\.nuget\\packages\\selenium.webdriver.chromedriver\\91.0.4472.10100\\selenium.webdriver.chromedriver.91.0.4472.10100.nupkg.sha512",
+    "C:\\Users\\Dzianis_Dukhnou\\.nuget\\packages\\selenium.webdriver.geckodriver.win64\\0.29.1\\selenium.webdriver.geckodriver.win64.0.29.1.nupkg.sha512",
+    "C:\\Users\\Dzianis_Dukhnou\\.nuget\\packages\\webdriverchromedriver\\2.10.0\\webdriverchromedriver.2.10.0.nupkg.sha512"
+  ],
+  "logs": []
+}
