@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace M8_Dzianis_Dukhnou.Methods
+namespace M8_Dzianis_Dukhnou.Utilities
 {
     public class Method
     {

@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using M8_Dzianis_Dukhnou.Entities;
 
 namespace M8_Dzianis_Dukhnou.WebObjects
 {
@@ -19,11 +20,11 @@ namespace M8_Dzianis_Dukhnou.WebObjects
         private readonly BaseElement _closeButton = new BaseElement(By.CssSelector("div.composeHeader-Buttons:nth-child(2) > div:nth-child(1) > div:nth-child(3) > button"));
         private readonly BaseElement _backToInbox = new BaseElement(By.XPath("//a[text() = 'Вернуться во \"Входящие\"']"));
 
-        public void PopulateEmail(string emailTo, string subject, string message)
+        public void PopulateEmail(Letter letter)
         {
-            PopulateToField(emailTo);
-            PopulateSubjectField(subject);
-            PopulateMessageField(message);
+            PopulateToField(letter._emailTo);
+            PopulateSubjectField(letter._subject);
+            PopulateMessageField(letter._message);
         }
 
         public void CloseLetter()

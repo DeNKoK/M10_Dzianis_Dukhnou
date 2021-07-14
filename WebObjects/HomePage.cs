@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using M8_Dzianis_Dukhnou.WebDriver;
+using M8_Dzianis_Dukhnou.Entities;
 
 namespace M8_Dzianis_Dukhnou.WebObjects
 {
@@ -55,14 +56,14 @@ namespace M8_Dzianis_Dukhnou.WebObjects
             return new LetterPage();
         }
 
-        public void CreateNumberOfDraftLetters(int number, string emailTo, string subject, string message)
+        public void CreateNumberOfDraftLetters(int number, Letter letter)
         {
             LetterPage letterPage;
 
             for (int i = 0; i < number; i++)
             {
                 letterPage = CreateNewLetter();
-                letterPage.PopulateEmail(emailTo, subject, message);
+                letterPage.PopulateEmail(letter);
                 letterPage.CloseLetter();
             }
         }

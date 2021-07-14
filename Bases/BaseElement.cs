@@ -6,7 +6,7 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using M8_Dzianis_Dukhnou.WebDriver;
 
-namespace M8_Dzianis_Dukhnou.WebObjects
+namespace M8_Dzianis_Dukhnou
 {
     public class BaseElement : IWebElement
     {
@@ -44,7 +44,7 @@ namespace M8_Dzianis_Dukhnou.WebObjects
             {
                 WaitForIsVisible();
 
-                return Browser.GetDriver().FindElement(_locator).Displayed;
+                return Browser.GetDriver().FindElement(_locator).Displayed; //Might be changed just to "true"
             }
             catch (Exception)
             {

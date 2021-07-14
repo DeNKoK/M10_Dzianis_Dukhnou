@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Interactions;
 using M8_Dzianis_Dukhnou.WebDriver;
 
-namespace M8_Dzianis_Dukhnou.WebObjects
+namespace M8_Dzianis_Dukhnou
 {
     public abstract class BasePage
     {

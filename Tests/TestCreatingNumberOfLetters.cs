@@ -1,20 +1,19 @@
 using NUnit.Framework;
 
-namespace M8_Dzianis_Dukhnou
+namespace M8_Dzianis_Dukhnou.Tests
 {
     [TestFixture]
     public class TestCreatingNumberOfLetters : BaseTest
     {
-        string emailTo;
-        string subject;
-        string message;
 
         [SetUp]
         public void TestCreatingNumberOfLetters_SetUp()
         {
-            emailTo = "dzianis.dukhnou@thomsonreuters.com";
-            subject = method.GetRandomString(10);
-            message = method.GetRandomString(50);
+            letter = new Entities.Letter(
+                "dzianis.dukhnou@thomsonreuters.com",
+                method.GetRandomString(10),
+                method.GetRandomString(50)
+                );
         }
 
         [TearDown]
@@ -27,7 +26,7 @@ namespace M8_Dzianis_Dukhnou
         public void CreatingNumberOfDraftLetters_VerifyRightClickDelete(int number)
         {
             //Act
-            _homePage.CreateNumberOfDraftLetters(number, emailTo, subject, message);
+            _homePage.CreateNumberOfDraftLetters(number, letter);
             _draftPage = _homePage.OpenDraftLetters();
             _rightClickMenuPage = _draftPage.RightClickOnTheletter(10);
             _draftPage = _rightClickMenuPage.Delete();
@@ -41,7 +40,7 @@ namespace M8_Dzianis_Dukhnou
         public void CreatingNumberOfDraftLetters_VerifyMoveUpButton(int number)
         {
             //Act
-            _homePage.CreateNumberOfDraftLetters(number, emailTo, subject, message);
+            _homePage.CreateNumberOfDraftLetters(number, letter);
             _draftPage = _homePage.OpenDraftLetters();
             _draftPage.Scroll(200);
 

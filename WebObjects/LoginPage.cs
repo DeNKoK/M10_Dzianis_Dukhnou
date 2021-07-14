@@ -1,5 +1,5 @@
 ﻿using OpenQA.Selenium;
-using M8_Dzianis_Dukhnou.WebDriver;
+using M8_Dzianis_Dukhnou.Entities;
 
 namespace M8_Dzianis_Dukhnou.WebObjects
 {
@@ -13,24 +13,24 @@ namespace M8_Dzianis_Dukhnou.WebObjects
         private readonly BaseElement _loginField = new BaseElement(By.Id("passp-field-login"));
         private readonly BaseElement _pswrdField = new BaseElement(By.Id("passp-field-passwd"));
 
-        public HomePage Login()
+        public HomePage Login(User user)
         {
-            PopulateLogin();
+            PopulateLogin(user._name);
             ClickSubmit();
-            PopulatePassword();
+            PopulatePassword(user._password);
             ClickSubmit();
 
             return new HomePage();
         }
 
-        public void PopulateLogin()
+        public void PopulateLogin(string userID)
         {
-            _loginField.SendKeys(Configuration.UserID);
+            _loginField.SendKeys(userID);
         }
 
-        public void PopulatePassword()
+        public void PopulatePassword(string password)
         {
-            _pswrdField.SendKeys(Configuration.Password);
+            _pswrdField.SendKeys(password);
         }
 
         public void ClickSubmit()

@@ -1,7 +1,8 @@
 using NUnit.Framework;
 using M8_Dzianis_Dukhnou.WebObjects;
 using M8_Dzianis_Dukhnou.WebDriver;
-using M8_Dzianis_Dukhnou.Methods;
+using M8_Dzianis_Dukhnou.Utilities;
+using M8_Dzianis_Dukhnou.Entities;
 
 namespace M8_Dzianis_Dukhnou
 {
@@ -9,6 +10,8 @@ namespace M8_Dzianis_Dukhnou
     {
         protected Browser Browser;
         protected Method method;
+        protected User user;
+        protected Letter letter;
 
         protected StartPage _startPage;
         protected LoginPage _loginPage;
@@ -26,11 +29,15 @@ namespace M8_Dzianis_Dukhnou
             Browser = Browser.Instance;
             Browser.WindowMaximaze();
             Browser.NavigateTo();
+            user = new User(
+                Configuration.UserID,
+                Configuration.Password
+                );
             method = new Method();
 
             _startPage = new StartPage();
             _loginPage = _startPage.ClickLogin();
-            _homePage = _loginPage.Login();
+            _homePage = _loginPage.Login(user);
         }
 
         [TearDown]

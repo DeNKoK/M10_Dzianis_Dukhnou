@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace M8_Dzianis_Dukhnou
+namespace M8_Dzianis_Dukhnou.Tests
 {
     [TestFixture]
     public class TestLogin : BaseTest

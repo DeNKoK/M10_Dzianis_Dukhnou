@@ -1,20 +1,19 @@
 using NUnit.Framework;
 
-namespace M8_Dzianis_Dukhnou
+namespace M8_Dzianis_Dukhnou.Tests
 {
     [TestFixture]
     public class TestSendEmail : BaseTest
     {
-        string emailTo;
-        string subject;
-        string message;
 
         [SetUp]
         public void TestSendEmail_SetUp()
         {
-            emailTo = "dzianis.dukhnou@thomsonreuters.com";
-            subject = method.GetRandomString(10);
-            message = method.GetRandomString(99);
+            letter = new Entities.Letter(
+                "dzianis.dukhnou@thomsonreuters.com",
+                method.GetRandomString(10),
+                method.GetRandomString(99)
+                );
         }
 
         [TearDown]
@@ -29,17 +28,17 @@ namespace M8_Dzianis_Dukhnou
         {
             //Arrange
             _letterPage = _homePage.CreateNewLetter();
-            _letterPage.PopulateEmail(emailTo, subject, message);
+            _letterPage.PopulateEmail(letter);
             _letterPage.CloseLetter();
-            _draftPage = _homePage.OpenDraftLetters();
 
             //Act
+            _draftPage = _homePage.OpenDraftLetters();
             _letterPage = _draftPage.OpenLetterByOrder(1);
             _homePage = _letterPage.ClickSend();
 
             //Assert
             _draftPage = _homePage.OpenDraftLetters();
-            Assert.IsFalse(_draftPage.FindLetterBySubject(subject), "The letter is still in the draft folder");
+            Assert.IsFalse(_draftPage.FindLetterBySubject(letter._subject), "The letter is still in the draft folder");
         }
 
         [Test]
@@ -47,17 +46,17 @@ namespace M8_Dzianis_Dukhnou
         {
             //Arrange
             _letterPage = _homePage.CreateNewLetter();
-            _letterPage.PopulateEmail(emailTo, subject, message);
+            _letterPage.PopulateEmail(letter);
             _letterPage.CloseLetter();
-            _draftPage = _homePage.OpenDraftLetters();
 
             //Act
+            _draftPage = _homePage.OpenDraftLetters();
             _letterPage = _draftPage.OpenLetterByOrder(1);
             _homePage = _letterPage.ClickSend();
 
             //Assert
             _sentPage = _homePage.OpenSentLetters();
-            Assert.IsTrue(_draftPage.FindLetterBySubject(subject), "The letter is not in the Sent Folder");
+            Assert.IsTrue(_draftPage.FindLetterBySubject(letter._subject), "The letter is not in the Sent Folder");
         }
     }
 }
