@@ -28,7 +28,7 @@ namespace M8_Dzianis_Dukhnou.WebDriver
 
         public static Browser Instance => _currentInstance ?? (_currentInstance = new Browser());
 
-        internal object switchTo()
+        internal object SwitchTo()
         {
             throw new NotImplementedException();
         }

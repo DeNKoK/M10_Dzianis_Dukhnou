@@ -10,48 +10,48 @@ namespace M8_Dzianis_Dukhnou.WebObjects
 
         public HomePage() : base(StartPageLocator, "Home Page") { }
 
-        private readonly BaseElement _sentItemsButton = new BaseElement(By.XPath("//span[text() = 'Отправленные']"));
-        private readonly BaseElement _draftsButton = new BaseElement (By.XPath("//span[text() = 'Черновики']"));
-        private readonly BaseElement _inboxButton = new BaseElement (By.XPath("//span[text() = 'Входящие']"));
-        private readonly BaseElement _refreshButton = new BaseElement (By.XPath("//span[@data-click-action='mailbox.check']"));
-        private readonly BaseElement _writeButton = new BaseElement (By.XPath("//a[contains(@class, 'mail-ComposeButton')]"));
-        private readonly BaseElement _userIcon = new BaseElement (By.XPath("//div[contains(@class, 'user-pic user-pic')]"));
-        private readonly BaseElement _userName = new BaseElement(By.XPath($"//span[text() ='{Configuration.UserID}']"));
+        private BaseElement SentItemsButton => new BaseElement(By.XPath("//span[text() = 'Отправленные']"));
+        private BaseElement DraftsButton => new BaseElement (By.XPath("//span[text() = 'Черновики']"));
+        private BaseElement InboxButton => new BaseElement (By.XPath("//span[text() = 'Входящие']"));
+        private BaseElement RefreshButton => new BaseElement (By.XPath("//span[@data-click-action='mailbox.check']"));
+        private BaseElement WriteButton => new BaseElement (By.XPath("//a[contains(@class, 'mail-ComposeButton')]"));
+        private BaseElement UserIcon => new BaseElement (By.XPath("//div[contains(@class, 'user-pic user-pic')]"));
+        private BaseElement UserName => new BaseElement(By.XPath($"//span[text() ='{Configuration.UserID}']"));
 
         public bool FindAccountIconByAccountName()
         {
-            return _userName.IsElementDisplayed();
+            return UserName.IsElementDisplayed();
         }
 
         public InboxPage OpenInboxLetters()
         {
-            _inboxButton.Click();
+            InboxButton.Click();
 
             return new InboxPage();
         }
 
         public SentPage OpenSentLetters()
         {
-            _sentItemsButton.Click();
+            SentItemsButton.Click();
 
             return new SentPage();
         }
 
         public DraftPage OpenDraftLetters()
         {
-            _draftsButton.Click();
+            DraftsButton.Click();
 
             return new DraftPage();
         }
 
         public void Refresh()
         {
-            _refreshButton.Click();
+            RefreshButton.Click();
         }
 
         public LetterPage CreateNewLetter ()
         {
-            _writeButton.Click();
+            WriteButton.Click();
 
             return new LetterPage();
         }
@@ -70,7 +70,7 @@ namespace M8_Dzianis_Dukhnou.WebObjects
 
         public UserMenuPage OpenUserMenu()
         {
-            _userIcon.Click();
+            UserIcon.Click();
 
             return new UserMenuPage();
         }

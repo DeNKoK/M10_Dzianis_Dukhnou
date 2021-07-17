@@ -3,7 +3,7 @@ using System.Text;
 
 namespace M8_Dzianis_Dukhnou.Utilities
 {
-    public class Method
+    public class StringRandomHelper
     {
         public string GetRandomString(int length)
         {

@@ -22,7 +22,7 @@ namespace M8_Dzianis_Dukhnou.WebDriver
                         driver = new ChromeDriver(service, options, TimeSpan.FromSeconds(timeOutSec));
                         break;
                     }
-                case BrowserType.remoteChrome:
+                case BrowserType.RemoteChrome:
                     {
                         var options = new ChromeOptions();
                         options.PlatformName = "windows";
@@ -36,7 +36,7 @@ namespace M8_Dzianis_Dukhnou.WebDriver
                             "-disable-gpu",
                             "--ignore-certificate-errors"
                             );
-                        driver = new RemoteWebDriver(new Uri("http://localhost:5566/wd/hub"), options.ToCapabilities());
+                        driver = new RemoteWebDriver(new Uri(Configuration.RemoteNode), options.ToCapabilities());
                         break;
                     }
                 case BrowserType.Firefox:
@@ -46,12 +46,12 @@ namespace M8_Dzianis_Dukhnou.WebDriver
                         driver = new FirefoxDriver(service, options, TimeSpan.FromSeconds(timeOutSec));
                         break;
                     }
-                case BrowserType.remoteFirefox:
+                case BrowserType.RemoteFirefox:
                     {
                         var capability = new DesiredCapabilities();
-                        capability.SetCapability(CapabilityType.BrowserName, "firefox");
+                        capability.SetCapability(CapabilityType.BrowserName, BrowserType.Firefox.ToString().ToLower());
                         capability.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Any));
-                        driver = new RemoteWebDriver(new Uri("http://localhost:5566/wd/hub"), capability);
+                        driver = new RemoteWebDriver(new Uri(Configuration.RemoteNode), capability);
                         break;
                     }
             }

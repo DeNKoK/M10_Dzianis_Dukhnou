@@ -8,19 +8,19 @@ namespace M8_Dzianis_Dukhnou.WebObjects
 
         public RightClickMenuPage() : base(StartPageLocator, "RightClick Page") { }
 
-        private readonly BaseElement _deleteButton = new BaseElement(By.XPath("//div[@data-id = '2']"));
-        private readonly BaseElement _putInFolder = new BaseElement(By.XPath("//div[@data-id = '8']"));
-        private readonly BaseElement _putInFolderInbox = new BaseElement(By.XPath("//div[@title = 'Входящие']"));
+        private BaseElement DeleteButton => new BaseElement(By.XPath("//div[@data-id = '2']"));
+        private BaseElement PutInFolder => new BaseElement(By.XPath("//div[@data-id = '8']"));
+        private BaseElement PutInFolderInbox => new BaseElement(By.XPath("//div[@title = 'Входящие']"));
 
         public void MoveToInboxFolder ()
         {
-            _putInFolder.Click();
-            _putInFolderInbox.Click();
+            PutInFolder.Click();
+            PutInFolderInbox.Click();
         }
 
         public DraftPage Delete()
         {
-            _deleteButton.Click();
+            DeleteButton.Click();
 
             return new DraftPage();
         }

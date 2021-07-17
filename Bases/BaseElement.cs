@@ -19,19 +19,19 @@ namespace M8_Dzianis_Dukhnou
             _locator = locator;
         }
 
-        public string TagName => throw new System.NotImplementedException();
+        public string TagName => throw new NotImplementedException();
 
-        public string Text => throw new System.NotImplementedException();
+        public string Text => throw new NotImplementedException();
 
-        public bool Enabled => throw new System.NotImplementedException();
+        public bool Enabled => throw new NotImplementedException();
 
-        public bool Selected => throw new System.NotImplementedException();
+        public bool Selected => throw new NotImplementedException();
 
-        public Point Location => throw new System.NotImplementedException();
+        public Point Location => throw new NotImplementedException();
 
-        public Size Size => throw new System.NotImplementedException();
+        public Size Size => throw new NotImplementedException();
 
-        public bool Displayed => throw new System.NotImplementedException();
+        public bool Displayed => throw new NotImplementedException();
 
         public void WaitForIsVisible()
         {
@@ -84,12 +84,12 @@ namespace M8_Dzianis_Dukhnou
 
         public IWebElement FindElement(By by)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public ReadOnlyCollection<IWebElement> FindElements(By by)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
         
         public ReadOnlyCollection<IWebElement> GetElements()
@@ -101,17 +101,17 @@ namespace M8_Dzianis_Dukhnou
 
         public string GetAttribute(string attributeName)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public string GetCssValue(string propertyName)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public string GetProperty(string propertyName)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void SendKeys(string text)
@@ -122,7 +122,7 @@ namespace M8_Dzianis_Dukhnou
 
         public void Submit()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

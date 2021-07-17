@@ -10,6 +10,8 @@ namespace M8_Dzianis_Dukhnou.WebDriver
 
         public static string Browser => GetEnviromentVar("Browser");
 
+        public static string RemoteNode => GetEnviromentVar("RemoteNode");
+
         public static string StartUrl => GetEnviromentVar("StartUrl");
 
         public static string UserID => GetEnviromentVar("User");

@@ -9,9 +9,9 @@ namespace M8_Dzianis_Dukhnou.WebObjects
 
         public LoginPage() : base(StartPageLocator, "Login Page") { }
 
-        private readonly BaseElement _submitButton = new BaseElement(By.XPath("//button[contains(@class, 'Button2') and @type = 'submit']"));
-        private readonly BaseElement _loginField = new BaseElement(By.Id("passp-field-login"));
-        private readonly BaseElement _pswrdField = new BaseElement(By.Id("passp-field-passwd"));
+        private BaseElement SubmitButton => new BaseElement(By.XPath("//button[contains(@class, 'Button2') and @type = 'submit']"));
+        private BaseElement LoginField => new BaseElement(By.Id("passp-field-login"));
+        private BaseElement PswrdField => new BaseElement(By.Id("passp-field-passwd"));
 
         public HomePage Login(User user)
         {
@@ -25,17 +25,17 @@ namespace M8_Dzianis_Dukhnou.WebObjects
 
         public void PopulateLogin(string userID)
         {
-            _loginField.SendKeys(userID);
+            LoginField.SendKeys(userID);
         }
 
         public void PopulatePassword(string password)
         {
-            _pswrdField.SendKeys(password);
+            PswrdField.SendKeys(password);
         }
 
         public void ClickSubmit()
         {
-            _submitButton.JsClick();
+            SubmitButton.JsClick();
         }
     }
 }

@@ -11,8 +11,8 @@ namespace M8_Dzianis_Dukhnou.Tests
         {
             letter = new Entities.Letter(
                 "dzianis.dukhnou@thomsonreuters.com",
-                method.GetRandomString(15),
-                method.GetRandomString(100)
+                randomString.GetRandomString(15),
+                randomString.GetRandomString(100)
                 );
         }
 

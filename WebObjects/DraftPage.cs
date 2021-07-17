@@ -8,51 +8,50 @@ namespace M8_Dzianis_Dukhnou.WebObjects
 
         public DraftPage() : base(StartPageLocator, "Draft Page") { }
 
-        private readonly BaseElement _selectAllCheckBox = new BaseElement(By.XPath("//span[@class = 'checkbox_view']"));
-        private readonly BaseElement _deleteButton = new BaseElement(By.XPath("//div[contains(@title, 'Delete')]"));
-        private readonly BaseElement _letter = new BaseElement(By.XPath("//span[contains(@class, 'js-message-snippet-left')]"));
-        private readonly BaseElement _moveUpButton = new BaseElement(By.CssSelector(".svgicon-mail--MainToolbar-MoveUpSmall > rect"));
+        private BaseElement SelectAllCheckBox => new BaseElement(By.XPath("//span[@class = 'checkbox_view']"));
+        private BaseElement DeleteButton => new BaseElement(By.XPath("//div[contains(@title, 'Delete')]"));
+        private BaseElement Letter => new BaseElement(By.XPath("//span[contains(@class, 'js-message-snippet-left')]"));
+        private BaseElement MoveUpButton => new BaseElement(By.CssSelector(".svgicon-mail--MainToolbar-MoveUpSmall > rect"));
+        private BaseElement SubjectElement(string subject) => new BaseElement(By.XPath($"//span[@Title = '{subject}']"));
 
         public bool FindLetterBySubject(string subject)
         {
-            var subjectElement = new BaseElement(By.XPath($"//span[@Title = '{subject}']"));
-
-            return subjectElement.IsElementDisplayed();
+            return SubjectElement(subject).IsElementDisplayed();
         }
         
         public bool FindMoveUpButton()
         {
-            return _moveUpButton.IsElementDisplayed();
+            return MoveUpButton.IsElementDisplayed();
         }
 
         public LetterPage OpenLetterByOrder(int number)
         {
-            _letter.GetElements()[number - 1].Click();
+            Letter.GetElements()[number - 1].Click();
 
             return new LetterPage();
         }
 
         public RightClickMenuPage RightClickOnTheletter(int number)
         {
-            _letter.RightClick(_letter.GetElements()[number - 1]);
+            Letter.RightClick(Letter.GetElements()[number - 1]);
 
             return new RightClickMenuPage();
         }
 
         public int CountDraftLetters()
         {
-            return _letter.GetElements().Count;
+            return Letter.GetElements().Count;
         }
 
         public void DeleteAll()
         {
-            _selectAllCheckBox.Click();
+            SelectAllCheckBox.Click();
             Delete();
         }
 
         public void Delete()
         {
-            _deleteButton.Click();
+            DeleteButton.Click();
         }
 
         public void Scroll(int pixels)

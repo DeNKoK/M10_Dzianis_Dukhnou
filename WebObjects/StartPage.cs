@@ -8,11 +8,11 @@ namespace M8_Dzianis_Dukhnou.WebObjects
 
         public StartPage() : base(StartPageLocator, "Start Page") { }
 
-        private readonly BaseElement _loginButton = new BaseElement(By.CssSelector(".button2_theme_mail-white"));
+        private BaseElement LoginButton => new BaseElement(By.CssSelector(".button2_theme_mail-white"));
 
         public LoginPage ClickLogin()
         {
-            _loginButton.Click();
+            LoginButton.Click();
 
             return new LoginPage();
         }

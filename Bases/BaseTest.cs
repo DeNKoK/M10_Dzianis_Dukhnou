@@ -9,7 +9,7 @@ namespace M8_Dzianis_Dukhnou
     public abstract class BaseTest
     {
         protected Browser Browser;
-        protected Method method;
+        protected StringRandomHelper randomString;
         protected User user;
         protected Letter letter;
 
@@ -33,7 +33,7 @@ namespace M8_Dzianis_Dukhnou
                 Configuration.UserID,
                 Configuration.Password
                 );
-            method = new Method();
+            randomString = new StringRandomHelper();
 
             _startPage = new StartPage();
             _loginPage = _startPage.ClickLogin();
