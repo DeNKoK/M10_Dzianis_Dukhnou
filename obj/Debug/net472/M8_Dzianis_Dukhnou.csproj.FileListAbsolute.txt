@@ -9,10 +9,10 @@ C:\Users\Dzianis_Dukhnou\source\repos\M8_Dzianis_Dukhnou\bin\Debug\net472\Micros
 C:\Users\Dzianis_Dukhnou\source\repos\M8_Dzianis_Dukhnou\bin\Debug\net472\nunit.framework.dll
 C:\Users\Dzianis_Dukhnou\source\repos\M8_Dzianis_Dukhnou\bin\Debug\net472\WebDriver.Support.dll
 C:\Users\Dzianis_Dukhnou\source\repos\M8_Dzianis_Dukhnou\bin\Debug\net472\WebDriver.dll
+C:\Users\Dzianis_Dukhnou\source\repos\M8_Dzianis_Dukhnou\obj\Debug\net472\M8_Dzianis_Dukhnou.csprojAssemblyReference.cache
 C:\Users\Dzianis_Dukhnou\source\repos\M8_Dzianis_Dukhnou\obj\Debug\net472\M8_Dzianis_Dukhnou.AssemblyInfoInputs.cache
 C:\Users\Dzianis_Dukhnou\source\repos\M8_Dzianis_Dukhnou\obj\Debug\net472\M8_Dzianis_Dukhnou.AssemblyInfo.cs
 C:\Users\Dzianis_Dukhnou\source\repos\M8_Dzianis_Dukhnou\obj\Debug\net472\M8_Dzianis_Dukhnou.csproj.CoreCompileInputs.cache
 C:\Users\Dzianis_Dukhnou\source\repos\M8_Dzianis_Dukhnou\obj\Debug\net472\M8_Dzianis_Dukhnou.csproj.CopyComplete
 C:\Users\Dzianis_Dukhnou\source\repos\M8_Dzianis_Dukhnou\obj\Debug\net472\M8_Dzianis_Dukhnou.dll
 C:\Users\Dzianis_Dukhnou\source\repos\M8_Dzianis_Dukhnou\obj\Debug\net472\M8_Dzianis_Dukhnou.pdb
-C:\Users\Dzianis_Dukhnou\source\repos\M8_Dzianis_Dukhnou\obj\Debug\net472\M8_Dzianis_Dukhnou.csprojAssemblyReference.cache

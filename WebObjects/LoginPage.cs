@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using M8_Dzianis_Dukhnou.Entities;
+using M8_Dzianis_Dukhnou.WebElements;
 
 namespace M8_Dzianis_Dukhnou.WebObjects
 {
@@ -9,9 +10,9 @@ namespace M8_Dzianis_Dukhnou.WebObjects
 
         public LoginPage() : base(StartPageLocator, "Login Page") { }
 
-        private BaseElement SubmitButton => new BaseElement(By.XPath("//button[contains(@class, 'Button2') and @type = 'submit']"));
-        private BaseElement LoginField => new BaseElement(By.Id("passp-field-login"));
-        private BaseElement PswrdField => new BaseElement(By.Id("passp-field-passwd"));
+        private BaseElement _submitButton = new BaseElement(By.XPath("//button[contains(@class, 'Button2') and @type = 'submit']"));
+        private readonly BaseElement _loginField = new BaseElement(By.Id("passp-field-login"));
+        private readonly BaseElement _pswrdField = new BaseElement(By.Id("passp-field-passwd"));
 
         public HomePage Login(User user)
         {
@@ -25,17 +26,18 @@ namespace M8_Dzianis_Dukhnou.WebObjects
 
         public void PopulateLogin(string userID)
         {
-            LoginField.SendKeys(userID);
+            _loginField.SendKeys(userID);
         }
 
         public void PopulatePassword(string password)
         {
-            PswrdField.SendKeys(password);
+            _pswrdField.SendKeys(password);
         }
 
         public void ClickSubmit()
         {
-            SubmitButton.JsClick();
+            _submitButton = new JsDecorator(_submitButton);
+            _submitButton.Click();
         }
     }
 }

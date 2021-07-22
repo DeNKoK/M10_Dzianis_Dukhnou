@@ -8,6 +8,10 @@ namespace M8_Dzianis_Dukhnou
 {
     public abstract class BaseTest
     {
+
+        #region Variables
+
+        protected Computer Computer;
         protected Browser Browser;
         protected StringRandomHelper randomString;
         protected User user;
@@ -23,9 +27,13 @@ namespace M8_Dzianis_Dukhnou
         protected UserMenuPage _userMenuPage;
         protected RightClickMenuPage _rightClickMenuPage;
 
+        #endregion
+
         [SetUp]
         public void SetUp()
         {
+            Computer = new Computer();
+            Computer.Launch("windows");
             Browser = Browser.Instance;
             Browser.WindowMaximaze();
             Browser.NavigateTo();

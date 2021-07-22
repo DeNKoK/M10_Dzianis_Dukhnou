@@ -8,9 +8,9 @@ namespace M8_Dzianis_Dukhnou.WebObjects
 
         public SentPage() : base(StartPageLocator, "Sent Page") { }
 
-        private BaseElement SelectAllCheckBox => new BaseElement(By.XPath("//span[@class = 'checkbox_view']"));
-        private BaseElement DeleteButton => new BaseElement(By.XPath("//div[contains(@title, 'Delete')]"));
-        private BaseElement Letter => new BaseElement(By.XPath("//span[contains(@class, 'js-message-snippet-left')]"));
+        private readonly BaseElement _selectAllCheckBox = new BaseElement(By.XPath("//span[@class = 'checkbox_view']"));
+        private readonly BaseElement _deleteButton = new BaseElement(By.XPath("//div[contains(@title, 'Delete')]"));
+        private readonly BaseElement _letter = new BaseElement(By.XPath("//span[contains(@class, 'js-message-snippet-left')]"));
         private BaseElement SubjectElement(string subject) => new BaseElement(By.XPath($"//span[@Title = '{subject}']"));
 
         public bool FindLetterBySubject(string subject)
@@ -20,20 +20,20 @@ namespace M8_Dzianis_Dukhnou.WebObjects
 
         public LetterPage OpenLetterByOrder(int number)
         {
-            Letter.GetElements()[number-1].Click();
+            _letter.GetElements()[number-1].Click();
 
             return new LetterPage();
         }
 
         public void DeleteAll()
         {
-            SelectAllCheckBox.Click();
+            _selectAllCheckBox.Click();
             Delete();
         }
 
         public void Delete()
         {
-            DeleteButton.Click();
+            _deleteButton.Click();
         }
     }
 }

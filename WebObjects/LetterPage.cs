@@ -9,16 +9,16 @@ namespace M8_Dzianis_Dukhnou.WebObjects
 
         public LetterPage() : base(StartPageLocator, "Letter Page") { }
 
-        private BaseElement ToFieldInput => new BaseElement(By.XPath("//div[@class = 'composeYabbles']"));
-        private BaseElement ToFieldOutput => new BaseElement(By.XPath("//div[@class = 'ComposeYabble-Text']"));
-        private BaseElement Topic => new BaseElement(By.XPath("//span[text() = 'Тема']"));
-        private BaseElement SubjectFieldInput => new BaseElement(By.XPath("//input[contains(@class, 'ComposeSubject-TextField')]"));
-        private BaseElement SubjectFieldOutput => new BaseElement(By.CssSelector(".mail-MessageSnippet-Item_subject > span:nth-child(1)"));
-        private BaseElement MessageField => new BaseElement(By.XPath("//div[@role = 'textbox']"));
-        private BaseElement SendButton => new BaseElement(By.CssSelector(".ComposeControlPanel-SendButton > button"));
-        private BaseElement SendResultMessage => new BaseElement(By.XPath("//span[text() = 'Письмо отправлено']"));
-        private BaseElement CloseButton => new BaseElement(By.CssSelector("div.composeHeader-Buttons:nth-child(2) > div:nth-child(1) > div:nth-child(3) > button"));
-        private BaseElement BackToInbox => new BaseElement(By.XPath("//a[text() = 'Вернуться во \"Входящие\"']"));
+        private readonly BaseElement _toFieldInput = new BaseElement(By.XPath("//div[@class = 'composeYabbles']"));
+        private readonly BaseElement _toFieldOutput = new BaseElement(By.XPath("//div[@class = 'ComposeYabble-Text']"));
+        private readonly BaseElement _topic = new BaseElement(By.XPath("//span[text() = 'Тема']"));
+        private readonly BaseElement _subjectFieldInput = new BaseElement(By.XPath("//input[contains(@class, 'ComposeSubject-TextField')]"));
+        private readonly BaseElement _subjectFieldOutput = new BaseElement(By.CssSelector(".mail-MessageSnippet-Item_subject > span:nth-child(1)"));
+        private readonly BaseElement _messageField = new BaseElement(By.XPath("//div[@role = 'textbox']"));
+        private readonly BaseElement _sendButton = new BaseElement(By.CssSelector(".ComposeControlPanel-SendButton > button"));
+        private readonly BaseElement _sendResultMessage = new BaseElement(By.XPath("//span[text() = 'Письмо отправлено']"));
+        private readonly BaseElement _closeButton = new BaseElement(By.CssSelector("div.composeHeader-Buttons:nth-child(2) > div:nth-child(1) > div:nth-child(3) > button"));
+        private readonly BaseElement _backToInbox = new BaseElement(By.XPath("//a[text() = 'Вернуться во \"Входящие\"']"));
 
         public void PopulateEmail(Letter letter)
         {
@@ -29,48 +29,48 @@ namespace M8_Dzianis_Dukhnou.WebObjects
 
         public void CloseLetter()
         {
-            CloseButton.Click();
+            _closeButton.Click();
         }
 
         public void PopulateToField(string emailTo)
         {
-            ToFieldInput.Click();
-            ToFieldInput.SendKeys(emailTo);
+            _toFieldInput.Click();
+            _toFieldInput.SendKeys(emailTo);
         }
 
         public void PopulateSubjectField(string subject)
         {
-            Topic.Click();
-            SubjectFieldInput.Click();
-            SubjectFieldInput.SendKeys(subject);
+            _topic.Click();
+            _subjectFieldInput.Click();
+            _subjectFieldInput.SendKeys(subject);
         }
 
         public void PopulateMessageField(string message)
         {
-            MessageField.Click();
-            MessageField.SendKeys(message);
+            _messageField.Click();
+            _messageField.SendKeys(message);
         }
 
         public string GetToField()
         {
-            return ToFieldOutput.GetText();
+            return _toFieldOutput.GetText();
         }
 
         public string GetSubjectField()
         {
-            return SubjectFieldOutput.GetText();
+            return _subjectFieldOutput.GetText();
         }
 
         public string GetMessageField()
         {
-            return MessageField.GetText();
+            return _messageField.GetText();
         }
 
         public HomePage ClickSend()
         {
-            SendButton.Click();
-            SendResultMessage.WaitForIsVisible();
-            BackToInbox.Click();
+            _sendButton.Click();
+            _sendResultMessage.WaitForIsVisible();
+            _backToInbox.Click();
 
             return new HomePage();
         }

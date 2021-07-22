@@ -8,6 +8,8 @@ namespace M8_Dzianis_Dukhnou.WebDriver
         public static string GetEnviromentVar(string var) =>
             ConfigurationManager.AppSettings[var];
 
+        public static string OS => GetEnviromentVar("OS");
+
         public static string Browser => GetEnviromentVar("Browser");
 
         public static string RemoteNode => GetEnviromentVar("RemoteNode");

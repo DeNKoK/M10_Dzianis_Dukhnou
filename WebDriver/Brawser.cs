@@ -8,14 +8,16 @@ namespace M8_Dzianis_Dukhnou.WebDriver
         private static IWebDriver _driver;
         private static Browser _currentInstance;
         private static string _browser;
+        public static Computer _currentComputer;
         public static BrowserType _currentBrowser;
         public static double _timeoutForElement;
         public static int ImplWait;
 
         public Browser()
         {
+            RunComputer();
             InitParams();
-            _driver = BrowserFactory.GetDriver(_currentBrowser, ImplWait);
+            _driver = BrowserFactory.GetDriver(_currentBrowser, _currentComputer, ImplWait);
         }
 
         private static void InitParams()
@@ -24,6 +26,12 @@ namespace M8_Dzianis_Dukhnou.WebDriver
             _timeoutForElement = Convert.ToDouble(Configuration.ElementTimeout);
             _browser = Configuration.Browser;
             Enum.TryParse(_browser, out _currentBrowser);
+        }
+
+        private static void RunComputer()
+        {
+            _currentComputer = new Computer();
+            _currentComputer.Launch(Configuration.OS);
         }
 
         public static Browser Instance => _currentInstance ?? (_currentInstance = new Browser());

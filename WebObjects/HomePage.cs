@@ -1,57 +1,60 @@
 ﻿using OpenQA.Selenium;
 using M8_Dzianis_Dukhnou.WebDriver;
 using M8_Dzianis_Dukhnou.Entities;
+using M8_Dzianis_Dukhnou.WebElements;
 
 namespace M8_Dzianis_Dukhnou.WebObjects
 {
     public class HomePage : BasePage
     {
-        private static readonly By StartPageLocator = By.XPath("//a[@href = 'https://360.yandex.ru/?from=header-360']");
+        private static readonly By StartPageLocator = By.XPath("//a[@href = 'https://360.yandex.ru/?from=mail-header-360']");
 
         public HomePage() : base(StartPageLocator, "Home Page") { }
 
-        private BaseElement SentItemsButton => new BaseElement(By.XPath("//span[text() = 'Отправленные']"));
-        private BaseElement DraftsButton => new BaseElement (By.XPath("//span[text() = 'Черновики']"));
-        private BaseElement InboxButton => new BaseElement (By.XPath("//span[text() = 'Входящие']"));
-        private BaseElement RefreshButton => new BaseElement (By.XPath("//span[@data-click-action='mailbox.check']"));
-        private BaseElement WriteButton => new BaseElement (By.XPath("//a[contains(@class, 'mail-ComposeButton')]"));
-        private BaseElement UserIcon => new BaseElement (By.XPath("//div[contains(@class, 'user-pic user-pic')]"));
-        private BaseElement UserName => new BaseElement(By.XPath($"//span[text() ='{Configuration.UserID}']"));
+        private readonly BaseElement _sentItemsButton = new BaseElement(By.XPath("//span[text() = 'Отправленные']"));
+        private readonly BaseElement _draftsButton = new BaseElement (By.XPath("//span[text() = 'Черновики']"));
+        private readonly BaseElement _inboxButton = new BaseElement (By.XPath("//span[text() = 'Входящие']"));
+        private readonly BaseElement _refreshButton = new BaseElement (By.XPath("//span[@data-click-action='mailbox.check']"));
+        private readonly BaseElement _userIcon = new BaseElement (By.XPath("//div[contains(@class, 'user-pic user-pic')]"));
+        private readonly BaseElement _userName = new BaseElement(By.XPath($"//span[text() ='{Configuration.UserID}']"));
+
+        private BaseElement _writeButton = new BaseElement(By.XPath("//a[contains(@class, 'mail-ComposeButton')]"));
 
         public bool FindAccountIconByAccountName()
         {
-            return UserName.IsElementDisplayed();
+            return _userName.IsElementDisplayed();
         }
 
         public InboxPage OpenInboxLetters()
         {
-            InboxButton.Click();
+            _inboxButton.Click();
 
             return new InboxPage();
         }
 
         public SentPage OpenSentLetters()
         {
-            SentItemsButton.Click();
+            _sentItemsButton.Click();
 
             return new SentPage();
         }
 
         public DraftPage OpenDraftLetters()
         {
-            DraftsButton.Click();
+            _draftsButton.Click();
 
             return new DraftPage();
         }
 
         public void Refresh()
         {
-            RefreshButton.Click();
+            _refreshButton.Click();
         }
 
         public LetterPage CreateNewLetter ()
         {
-            WriteButton.Click();
+            _writeButton = new JsDecorator(_writeButton);
+            _writeButton.Click();
 
             return new LetterPage();
         }
@@ -70,7 +73,7 @@ namespace M8_Dzianis_Dukhnou.WebObjects
 
         public UserMenuPage OpenUserMenu()
         {
-            UserIcon.Click();
+            _userIcon.Click();
 
             return new UserMenuPage();
         }

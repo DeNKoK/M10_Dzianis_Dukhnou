@@ -1,15 +1,11 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Remote;
-using System;
 
 namespace M8_Dzianis_Dukhnou.WebDriver
 {
     public class BrowserFactory
     {
 
-        public static IWebDriver GetDriver(BrowserType type, int timeOutSec)
+        public static IWebDriver GetDriver(BrowserType type, Computer computer, int timeOutSec)
         {
             IWebDriver driver = null;
 
@@ -17,41 +13,22 @@ namespace M8_Dzianis_Dukhnou.WebDriver
             {
                 case BrowserType.Chrome:
                     {
-                        var service = ChromeDriverService.CreateDefaultService();
-                        var options = new ChromeOptions();
-                        driver = new ChromeDriver(service, options, TimeSpan.FromSeconds(timeOutSec));
+                        driver = new ChromeBrowser(timeOutSec).driver;
                         break;
                     }
                 case BrowserType.RemoteChrome:
                     {
-                        var options = new ChromeOptions();
-                        options.PlatformName = "windows";
-                        options.AddArguments
-                            (
-                            "enable-automation",
-                            "--no-sandbox",
-                            "--disable-infobars",
-                            "--disable-dev-shm-usage",
-                            "--disable-browser-side-navigation",
-                            "-disable-gpu",
-                            "--ignore-certificate-errors"
-                            );
-                        driver = new RemoteWebDriver(new Uri(Configuration.RemoteNode), options.ToCapabilities());
+                        driver = new RemoteChromeBrowser(computer, timeOutSec).driver;
                         break;
                     }
                 case BrowserType.Firefox:
                     {
-                        var service = FirefoxDriverService.CreateDefaultService();
-                        var options = new FirefoxOptions();
-                        driver = new FirefoxDriver(service, options, TimeSpan.FromSeconds(timeOutSec));
+                        driver = new FirefoxBrowser(timeOutSec).driver;
                         break;
                     }
                 case BrowserType.RemoteFirefox:
                     {
-                        var capability = new DesiredCapabilities();
-                        capability.SetCapability(CapabilityType.BrowserName, BrowserType.Firefox.ToString().ToLower());
-                        capability.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Any));
-                        driver = new RemoteWebDriver(new Uri(Configuration.RemoteNode), capability);
+                        driver = new RemoteFirefoxBrowser(timeOutSec).driver;
                         break;
                     }
             }
